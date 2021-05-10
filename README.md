@@ -5,4 +5,4 @@ This website was developed as part of 'Web Development Environments' course at B
 
 The site doesn't save any previous scores or users.
 
-To play the game you can use the default username: k, password: k.
+To play the game you can use the default user: username - k, password - k.
