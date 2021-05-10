@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>best-pacman</title>
+		<script src="./jquery-3.4.1.slim.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/menu-style.css">
+		<link rel="stylesheet" type="text/css" href="css/settings-style.css">
+		<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=VT323">
+	</head>
+
+	<body>
+		<!--****************** HEADER ******************-->
+		<header>
+		<p>
+			<img src="media/logo.png" width="120" height="120">
+			<h1>BEST-PACMAN</h1>
+			<h2>By Nir Steinfeld and Omer Marco</h2>
+		</p>
+		</header>
+		
+		<!--****************** TOP MENU ******************-->
+		<div class="top-menu">
+			<ul>
+				<li><a onclick="set_active_menu_item('welcome')">WELCOME</a></li>
+				<li><a onclick="set_active_menu_item('register')">REGISTER</a></li>
+				<li><a onclick="set_active_menu_item('login')">LOGIN</a></li>
+				<li><a onclick="set_active_menu_item('scores')">SCORES</a></li>
+				<li><a onclick="open_about_modal()">ABOUT</a></li>
+			</ul>
+		</div>
+		
+		<!--****************** WELCOME ******************-->
+		<div id='welcome-div' class='div_box'>
+			<center>
+				<h1>HEY WELCOME TO OUR GAME!</h1>
+				<h3>Please login or register to start playing</h2>
+				<button id="register-btn" class="welcome-btn" type="button" onclick="set_active_menu_item('register')">REGISTER</button>
+				<br/>
+				<br/>
+				<button id="login-btn" class="welcome-btn" type="button" onclick="set_active_menu_item('login')">LOGIN</button>
+			</center>
+		</div>
+
+		<!--****************** REGISTER ******************-->
+		<div id='register-div' class='div-box'>
+			<center>
+				<form id='registration-form'>
+					<div class='reg-log-form'>
+						
+						<h1>Register</h1>
+					
+						<input type="text" class='reg-log-form' placeholder="Username" name="regUsername" id="reg-username">
+						<input type="password" class='reg-log-form' placeholder="Password" name="regPassword" id="reg-password">
+						<input type="text" class='reg-log-form' placeholder="Full Name" name="regFullname" id="reg-fullname">
+						<input type="text" class='reg-log-form' placeholder="Email" name="regEmail" id="email">
+						<input placeholder="Birthdate" class='reg-log-form' type="text" onfocus="(this.type='date')" onblur="(this.type='text')"  name="regBirthdate" id="reg-birthdate">
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+						<hr>
+
+						<button type="submit" class='reg-log-form'>Submit</button>
+
+						<p id="registration-msg"></p>
+
+					</div>
+				</form>
+			</center>
+		</div>
+
+		<!--****************** LOGIN ******************-->
+		<div id='login-div' class='div-box' action="">
+			<center>
+				<form id='login-form'>
+						
+					<h1>Login</h1>
+				
+					<input type="text" class='reg-log-form' placeholder="Username" name="loginUsername" id="login-usernaem">
+					<input type="password" class='reg-log-form' placeholder="Password" name="loginPassword" id="login-password">
+					<hr>
+
+					<button type="submit" class='reg-log-form'>Login</button>
+
+					<p id="login-error"></p>
+
+				</form>
+			</center>
+		</div>
+
+		<!--****************** SETTINGS ******************-->
+		<div id="settings-div" class="div-box">
+			<div class="settings">
+				<cetner>
+					<form id='settings-form' action="">
+						
+						<br/>
+						<h1>Choose your game settigns and hit the Start button to begin</h1>
+						<hr>
+						<br/>
+
+						<div class='input-key-div'>
+							<div class='cell'>Move Up:</div>
+							<input type="button" class='settings-input' onclick="highlightKeyButton('up')" onkeydown="setKey(event, 'up')" class='settings-form' name="upKey" id="upKey" value='Arrow Up'>
+							<div class='cell'>Move Down:</div>
+							<input type="button" class='settings-input' onclick="highlightKeyButton('down')" onkeydown="setKey(event, 'down')" class='settings-form' name="downKey" id="downKey" value='Arrow Down'>
+						</div>	
+
+						<div class='input-key-div'>
+							<div class='cell'>Move Left:</div>
+							<input type="button" class='settings-input' onclick="highlightKeyButton('left')" onkeydown="setKey(event, 'left')" class='settings-form' name="leftKey" id="leftKey" value='Arrow Left'>
+							<div class='cell'>Move Right:</div>
+							<input type="button" class='settings-input' onclick="highlightKeyButton('right')" onkeydown="setKey(event, 'right')" class='settings-form' name="rightKey" id="rightKey" value='Arrow Right'>
+						</div>	
+
+						<br/>
+						Food Count: <span id='display-food-count'></span>
+						<input type="range" min="50" max="90" value="70" class="food-count-slider" id="food-count" oninput='updateSliderValue()'>
+						
+						<br/>
+						<br/>
+
+						<div class='food-colors'>
+							<div class='food-color'>
+								5 points food color:
+								<input type="color" id='food-color-low' value='#3b1dd1'>
+							</div>
+							<div class='food-color'>
+								15 points food color:
+								<input type="color" id='food-color-mid' value='#bf1f0d'>
+							</div>
+							<div class='food-color'>
+								25 points food color:
+								<input type="color" id='food-color-high' value='#83d115'>
+							</div>
+						</div>
+
+						<br/>
+						<br/>
+
+						Game Time:
+						<input class='game-time-input' id='game-time-input-id' type="number" min=60 value=60>
+
+						Number of Monsters:
+						<select id="monster-count-id">
+							<option value=1>1</option>
+							<option value=2>2</option>
+							<option value=3>3</option>
+							<option value=4>4</option>
+						</select>
+
+						<br/>
+
+						<button type="button" class='random-btn' onclick="randomizeSettings()">RANDOM!</button>
+
+						<br/>
+						<hr>
+
+						<button type="submit" class='reg-log-form'>Start!</button>
+
+					</form>
+				</cetner>
+			</div>
+		</div>
+	
+		<!--****************** SCORES ******************-->
+		<div id="scores-div" class="div-box">
+			<center>
+				<table>
+					<br>
+					<br>
+					<br>
+					<tr style='border-bottom: 1px solid yellow;'>
+						<th>#</th>
+						<th>USERNAME</th> 
+						<th>TIME</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td id='score-table-username-0'></td>
+						<td id='score-table-time-0'></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td id='score-table-username-1'></td>
+						<td id='score-table-time-1'></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td id='score-table-username-2'></td>
+						<td id='score-table-time-2'></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td id='score-table-username-3'></td>
+						<td id='score-table-time-3'></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td id='score-table-username-4'></td>
+						<td id='score-table-time-4'></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td id='score-table-username-5'></td>
+						<td id='score-table-time-5'></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td id='score-table-username-6'></td>
+						<td id='score-table-time-6'></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td id='score-table-username-7'></td>
+						<td id='score-table-time-7'></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td id='score-table-username-8'></td>
+						<td id='score-table-time-8'></td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td id='score-table-username-9'></td>
+						<td id='score-table-time-9'></td>
+					</tr>
+				</table>
+			</center>
+		</div>
+
+		<!--****************** ABOUT ******************-->
+		<div id="about-modal-id" class="modal fade">
+			<div class="modal-content">
+			    <span id="about-close-btn" class="close">&times;</span>
+			    <h1 style='font-size: 72px;'>ABOUT</h1>
+				<hr>
+				<br/>
+				<p>THIS GAME WAS DEVELOPED BY NIR STEINFELD AND OMER MARCO</p>
+			    <p>IT IS CURRENTLY THE BEST PACMAN GAME KNOWN TO EXIST</p>
+				<p>WE USE A JQUERY PLUGGIN TO VALIDATE USER INPUT</p>
+				<p>OUR MAIN DIFFUCULT WAS MAKING THE GHOSTS RUN WISELY IN THE MAP</p>
+				<p>WE ALSO HAD A HARD TIME GETTING THE JQUERRY VALIDATION THING TO WORK</p>
+			</div>
+		</div>
+
+		<!--****************** GAME ******************-->
+		<center>
+			<div id="game-div" class="div-box">
+					
+				<p>
+					<div id="user-name" class='game-lbl'>
+						<label for="lblUserName">UserName:</label>
+						<input id="lblUserName" type="text" readonly/>
+					</div>
+					<div id="score" class='game-lbl'>
+						<label for="lblScore">SCORE:</label>
+						<input id="lblScore" type="text" readonly/>
+					</div>
+					<div id="time" class='game-lbl'>
+						<label for="lblTime">TIME:</label>
+						<input id="lblTime" type="text" readonly/>
+					
+					</div>
+					
+					<img id='heart1' class='heart' src="./media/heart.png" style="width:30px; height:30px;">
+					<img id='heart2' class='heart' src="./media/heart.png" style="width:30px; height:30px;">
+					<img id='heart3' class='heart' src="./media/heart.png" style="width:30px; height:30px;">
+					<img id='heart4' class='heart' src="./media/heart.png" style="width:30px; height:30px;">
+					<img id='heart5' class='heart' src="./media/heart.png" style="width:30px; height:30px;">
+					
+					<button id='new-game-btn-id' onclick="set_active_menu_item('settings')">NEW GAME</button>
+
+				</p>
+		
+				<div id="game">
+					<canvas id="canvas" height="600" width="600"></canvas>
+				</div>
+			</div>
+
+			<div id="side-game-settings">
+		
+				<p>CHOSEN SETTINGS:</p>
+				<p id="TimeShow">   </p>
+				<p id="downKeyShow">&#x2193; : DOWN ARROW</p>
+				<p id="leftKeyShow">&#x2190; : LEFT ARROW</p>
+				<p id="upKeyShow"> &#x2191; : UP ARROW</p>
+				<p id="rightKeyShow"> &#x2192; : RIGHT ARROW</p>
+				<p id="FoodShow">FOOD BALLS: </p>
+				<p id="MonsterShow">NUMBER OF GHOSTS: </p>
+						
+			</div>
+
+		</center>
+
+		<!--****************** FOOTER ******************-->
+		<footer>
+			This website was created as part of "Web Development Environments" course, BGU.
+			For any question or suggestion contact us at nirstein@post.bgu.ac.il or omermarc@post.bgu.ac.il
+		</footer>
+	</body>
+
+	<script type="text/javascript" src="./javascript/app.js"></script>	
+	<script type="text/javascript" src="./javascript/menu.js"></script>
+	<script type="text/javascript" src="./javascript/user_mgmt.js"></script>
+	<audio id="game-music" src="../media/game_music.wav" preload="auto"></audio>
+
+</html>

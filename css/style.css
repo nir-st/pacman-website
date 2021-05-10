@@ -1,0 +1,179 @@
+body {
+    background-image: url('../media/bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.box {
+    box-sizing: border-box;
+    position:absolute;
+}
+
+/* Header */
+header img {
+    float: left;
+}
+
+header h1, h2 {
+    color: white;
+    padding-left: 150px;
+}
+
+#welcome-div {
+    color: white;
+    font-size: 52px;
+    font-family: vt323;
+}
+
+.welcome-btn {
+    background-color: yellow;
+    color: red;
+    text-align: center;
+    width: 230px;
+    height: 70px;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
+.welcome-btn:hover {
+    background-color: cadetblue;
+    color: black;
+    cursor: pointer;
+}
+
+#register-div {
+    display: none;
+    width: 50%;
+    margin-left: 25%;
+    color: white;
+    font-size: 28px;
+}
+
+input.reg-log-form {
+    font-size: 24px;
+    width: 50%;
+    box-sizing: border-box;
+    border: 5px solid red;
+    margin-top: 3%;
+    padding: 1%;
+    border-radius: 25px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+button.reg-log-form {
+    font-size: 24px;
+    width: 50%;
+    box-sizing: border-box;
+    border: 5px solid red;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 25px;
+    background-color: khaki;
+}
+
+button:hover.reg-log-form {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+input:focus.reg-log-form {
+    background-color: gainsboro;
+}
+
+#login-div {
+    display: none;
+    width: 50%;
+    margin-left: 25%;
+    color: white;
+    font-size: 28px;
+}
+
+#settings-div {
+    display: none;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#about-div {
+    display: none;
+}
+
+.error {
+    display: inline;
+    color: red;
+    font-style: italic;
+    font-size: 24px;
+}
+
+#login-error { 
+    color: red;
+    font-size: 18;
+}
+
+#registratoin-msg { 
+    color: white;
+    font-size: 18;
+}
+
+/* FOOTER */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
+
+#game-div {
+    display: none;
+    background-color: black;
+    width: 50%;
+    color: yellow;
+    font-family: vt323;
+    font-size: 24px;
+}
+
+#game-div p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#game-div input {
+    background-color: black;
+    color: yellow;
+    font-family: vt323;
+    font-size: 24px;
+    text-align: center;
+}
+
+.game-lbl {
+    display: inline-block;
+}
+
+.heart {
+    margin-top: 10px;
+    padding-left: 2%;
+}
+
+#new-game-btn-id {
+    font-family: vt323;
+    font-size: 20px;
+    color: yellow;
+    background-color: rgba(255, 255, 255, 0.2);    
+}
+
+#new-game-btn-id:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+#side-game-settings {
+    margin-top: 2%;
+    display: none;
+    vertical-align: top;
+    font-family: vt323;
+    font-size: 28px;
+    background-color: rgba(153, 0, 153, 0.5);
+}
