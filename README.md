@@ -3,6 +3,6 @@ https://web-development-environments-2021.github.io/Assignment2_205706542_312477
 
 This website was developed as part of 'Web Development Environments' course at Ben Gurion University, 2021.
 
-The site doesn't save any previous scores or users.
+The site does not store any previous scores or users (apart from the default user).
 
-To play the game you can use the default user: username - k, password - k.
+To play the game using the default user use: username - k, password - k.
